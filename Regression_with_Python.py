@@ -1,14 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
 ## 머신러닝(회귀분석 모듈 구현)을 위한 파이썬 ##
-
-
-# In[2]:
-
 
 ## 제1장.제1절. Pythonic Code ##
 # 1.1. Split & Join
@@ -19,9 +12,6 @@ items = "zero one two three".split()
 print(items)
 
 
-# In[3]:
-
-
 example = "python, jquery, javascript"
 example.split(",")
     # ","을 기준으로 문자열 나누기
@@ -30,30 +20,15 @@ a, b, c = example.split(",")
 print(c)
 
 
-# In[4]:
-
-
 example = "cs50.gachon.edu"
     # "."을 기준으로 문자열 나누고 unpacking
 a, b, c = example.split(".")
 print(a)
 
 
-# In[5]:
-
-
 colors = ["red", "blue", "green", "yellow"]
 result = "".join(colors)
 result
-
-
-# In[ ]:
-
-
-
-
-
-# In[6]:
 
 
 # 1.2. List Comprehension and Nested For loop
@@ -68,9 +43,6 @@ result # list comprehension
 
 result = [i for i in range(10) if i % 2 == 0]
 result # filter를 건 list comprehension
-
-
-# In[7]:
 
 
 word_1 = "New"
@@ -91,9 +63,6 @@ result3 = [
 print(result3)
 
 
-# In[8]:
-
-
 words = "The quick brown box jumps over the lazy dog".split()
     # 2차원 list comprehension
     # 문장을 빈칸 기준으로 분리하여 list로 변환
@@ -104,15 +73,6 @@ stuff = [
 ]
 for i in stuff:
     print(i)
-
-
-# In[ ]:
-
-
-
-
-
-# In[9]:
 
 
 # 1.3. Enumerate : list의 element를 추출할 때 번호를 붙여서 추출
@@ -130,9 +90,6 @@ list(enumerate( mylist ))
     "Sookmyung Women's University is an academic institute located in South Korea".split() 
 )}
     # 문장을 list로 만들고 list의 index와 값을 unpacking하여 dictionary type으로 저장
-
-
-# In[10]:
 
 
 result1 = ["N", "L", "H"] # level
@@ -155,16 +112,7 @@ for i, (l, m) in enumerate( zip(result1, result2) ):
 [sum(x) for x in zip( (1,2,3), (0, 100, 500) )]
     # 각 tuple, 같은 index를 묶어 합을 list로 변환
 
-
-# In[ ]:
-
-
-
-
-
-# In[12]:
-
-
+    
 # 1.4. Lambda : 함수 이름 없이, 함수처럼 쓸 수 있는 익명함수
     # 수학의 람다 대수에서 유래, Python3부터 권장하지 않지만 여전히 쓰임
 
@@ -177,10 +125,7 @@ import numpy as np
 f = lambda n, k : n * k
 print( f(100, np.log(20)) )
     # 시간복잡도 n * logk
-
-
-# In[13]:
-
+    
 
 # Map function : sequence 자료형의 각 element에 동일한 function을 적용함
     # map reduce 개념 추후 학습
@@ -204,9 +149,6 @@ list( map(
     # value in list
 
 
-# In[14]:
-
-
 # Reduce function : legacy libraray에서 머신러닝 코드에서 여전히 사용
 
 from functools import reduce
@@ -218,9 +160,6 @@ print( reduce(
     # (((((1*8)*1)*5)*1)*1)*8
 
 
-# In[15]:
-
-
 def factorial(n):
     return reduce(
         lambda x, y: x*y,
@@ -228,15 +167,6 @@ def factorial(n):
     )
 factorial(5)
     # 5*4*3*2*1
-
-
-# In[ ]:
-
-
-
-
-
-# In[16]:
 
 
 # 1.5. Asterisk : 흔히 아는 *, 단순제곱-제곱연산-가변인자 활용 등 다양하게 사용
@@ -265,9 +195,6 @@ asterisk_test2(1, c = 2, d = 3, e = 4, f = 5, g = 6)
     # dictionary type
 
 
-# In[17]:
-
-
 def asterisk_test(a, *args):
     print(a, args[0])
     print(type(args))
@@ -279,10 +206,7 @@ def asterisk_test(a, *args):
 asterisk_test(1, (2,3,4,5,6))
     # 튜플 타입으로 
 
-
-# In[18]:
-
-
+    
 data = ([1,2], [3,4], [5,6])
 print(*data)
     # asterisk - upacking a container
@@ -292,15 +216,6 @@ def asterisk_test(a, b, c, d,):
     print(a, b, c, d)
 data = {"b" : 1, "c" : 2, "d":3}
 asterisk_test(4, **data)
-
-
-# In[ ]:
-
-
-
-
-
-# In[19]:
 
 
 # 1.5. tuple, dict에 대한 확장 데이터 구조 : Collections 내 모듈
@@ -320,9 +235,6 @@ deque_list.appendleft(10)
 print(deque_list)
 
 
-# In[21]:
-
-
 deque_list.rotate(2)
 print(deque_list)
 deque_list.rotate(2)
@@ -333,9 +245,6 @@ deque_list.extendleft( [5,6,7] )
 print(deque_list)
 
 print(deque( reversed(deque_list) ))
-
-
-# In[27]:
 
 
 from time import time
@@ -353,10 +262,7 @@ def check():
 print(check())
     # 0.017951011657714844
 
-
-# In[36]:
-
-
+    
 import time
 
 start_time = time.clock()
@@ -368,9 +274,6 @@ for i in range(2**7):
     dequeList.append(i)
     dequeList.pop()
 print(time.clock() - start_time, "seconds")
-
-
-# In[44]:
 
 
 # Sorting {key : value}
@@ -388,10 +291,7 @@ d["HD"] = 500
 for k, v in d.items():
     print(k, v)
 
-
-# In[45]:
-
-
+    
 d = OrderedDict()
 d["SK"] = 100
 d["KB"] = 300
@@ -402,10 +302,7 @@ for k, v in OrderedDict(sorted(d.items(),
                                key = lambda t: t[0])).items():
     print(k, v)
 
-
-# In[ ]:
-
-
+    
 for k, v in OrderedDict(sorted(d.items().
                               reverse = TRUE, key = ))
 
