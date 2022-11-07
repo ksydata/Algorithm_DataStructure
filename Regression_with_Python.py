@@ -306,3 +306,123 @@ for k, v in OrderedDict(sorted(d.items(),
 for k, v in OrderedDict(sorted(d.items().
                               reverse = TRUE, key = ))
 
+
+## 제4장. 로지스틱 회귀분석모형 구현 ##
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+    # [Error]
+    # import tensorflow as tf
+    # tf.compat.v1.disable_eager_execution()
+
+data_train = pd.read_csv(
+    "C:\PDSR\RforStatistics_FinalProject/data_train_py.csv", 
+    index_col = 0)
+    # [R로 데이터 전처리 완료한 csv.file read]
+'''
+    file = open(
+        "C:\PDSR\RforStatistics_FinalProject/data_train_py.csv",
+        "r", encoding = "UTF-8")
+    reader = csv.reader( file )
+    for line in reader:
+        print( line )
+    file.close()
+    
+    writer = csv.writer( file )
+    writer.writerow( [list] )
+    file.close()
+'''
+
+type(data_train)
+np.random.seed(12345)
+    # [set a seed for reproducible results]
+    # [binary classification uses sigmoid function]
+from sklearn.base import BaseEstimator, ClassifierMixin
+
+
+class BinaryLogisticReg( BaseEstimator, ClassifierMixin ):
+    # [클래스를 이용하여 교차 유효성 검사를 추가로 수행할 수 있도록]
+    # [BaseEstimator와 ClassifierMixin class를 상속 결정] sklearn cross_val_score
+    
+    # 1. 매개변수를 무작위로 초기화
+    def __init__(self):
+        self.params = {}
+        self.verbose = 0
+        
+    def init_params(self, X):
+        n_features = X.shape[1]
+            # [number of features]
+        self.params["coef"] = np.random.randn(n_features, 1)
+            # [the matrix for slope coefficients]
+        self.params["intercept"] = np.random.randn(1, 1)
+            # [the y-intercept]
+        
+        if self.verbose:
+            print("[INFO] Initialized parameters")
+            print(f"Shape of coefficinet matrix : {self.params["coef"].shape}")
+            print(f"Shape of intercept matrix : {self.params["intercept"].shape}")
+
+    # 2. 현재상태의 모델로 확률을 얻기 위해 예측 수행
+    def get_logits(self, X, y = None):
+        if "coef" not in self.params:
+            # [initialize parameters if haven't]
+            self.init_params(X)
+        return X @ self.params["coef"] + self.params["intercept"]
+            # [logits = log(odds) = X@W + b]
+    
+    def predict_proba(self, X, y = None):
+        logits = self.get_logits(X)
+        return 1 / 1 + np.exp(-logits)
+            # [Sigmoid function]
+            # [Used to get probability for binary class]
+    
+    def fit(self, X, y, learning_rate = 0.05, iterations = 1000, verbose = 0):
+        self.verbose = verbose
+            # [set verbose to 1 to see the entire training progress]
+        
+        if isinstance(X, pd.Dataframe):
+            X = X.values
+            self.init_params(X)
+                # [initialize parameters]
+            m = X.shape[0]
+                # [number of samples]
+        
+        if verbose:
+            print("[INFO] Traing ... ")
+        
+        # 3. 비용함수에 대한 미분 계산 & 경사하강법을 사용하여 매개변수 업데이트
+        for i in range(1, iterations + 1):
+            y_proba = self.predict_proba(X)
+            # [make predictions by computing probability]
+
+            loss = - (1/m) * np.sum(y * np.log( y_proba )\
+                                   + (1 - y) * np.log( 1 - y_proba ))
+            # [calculate the binary cross-entropy loss]
+            
+            dw = (1/m) * (X.T @ (y_proba - y))
+            db = (1/m) * np.sum(y_proba - y)
+            # [calculate gradients via deribatives]
+            # [with respect to loss function (refer above)]
+            
+            self.params["coef"] -= (learing_rate * dw)
+            self.params["intercept"] -= (learning_rate * db)
+            
+            if verbose and (i == 1 or i % 100 == 0):
+                print(f"\nIteration {i} / {iterations}")
+                print("--" * 12)
+                print(f"Loss : {loss}")
+                print(f"Coefficient : \n{self.params["coef"]}")
+                print(f"Intercept : \n{self.params["intercept"]}")
+    
+    def predict(self, X, threshold = 0.5):
+        y_proba = self.predict_proba(X)
+        y_pred = np.where(y_proba > threshold, 1, 0)
+        return y_pred
+    
+    def predict_score(self, X, y):
+        from sklearn.metrics import accuracy_score
+        y_pred = self.predict(X)
+        return accuracy_score(y, y_pred)
+        
+        
