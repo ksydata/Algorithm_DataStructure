@@ -2,6 +2,64 @@
 # coding: utf-8
 
 
+### 파이썬을 이용한 알고리즘의 이해 ###
+
+## 제1장 1차원, 2차원에서 극댓값 찾기 ##
+## 제2장 계산 모델 ##
+
+
+# 문서 거리 알고리즘 #
+# (1) split document to word (2) count word frequency (3) calculate scalar product of vectors(벡터의 내적, 각도)
+
+
+# (1) 문서 내 단어의 빈도 연산 시 정규표현식 이용하는 구조화된 유사 코드(pseudo code)
+# re.findall(r "\wt", doc)
+
+char = 0
+doc = 0
+for char in doc:
+    
+    doc = ["digitaldevice", "retail", "financialcredit", "mobility"]
+    
+    if not alphanumeric:
+        add previous word
+    if any to list: 
+        start new word
+            # 조건문에서 O(1) 상수의 시간 복잡도 
+        # 총 문서 내 단어의 빈도 연산 O(2^n) 부분집합만큼 즉, 지수형 시간 복잡도
+
+
+# (2) 단어 리스트 정렬 *word : 자연로그 이상의 비트인 객체가 레지스터 메모리에 들어있는 경우
+
+word = 0
+list = 0
+for word in list:
+    
+    doc = ["digitaldevice", "retail", "financialcredit", "mobility"]
+    
+    if same as last word:
+        increment counter
+    else:
+        add last word and count to list
+        reset counter to 0
+            # O(1)
+        # O(k*logk*|word|)
+
+
+# (3) Dictionary Approach
+
+doc = []
+count = {}
+for word in doc:
+    
+    doc = ["digitaldevice", "retail", "financialcredit", "mobility"]
+    
+    if word in count:
+        count[word] += 1
+            # O(1) key에 해당하는 value의 frequency를 counting
+    else: count[word] = 1
+
+
 ### 모두의 알고리즘 with Python ###
 ## 제1장. 알고리즘 기초 ##
 
