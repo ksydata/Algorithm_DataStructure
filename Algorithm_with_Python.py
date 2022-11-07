@@ -1,14 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
 
 ### 모두의 알고리즘 with Python ###
 ## 제1장. 알고리즘 기초 ##
-
-
-# In[6]:
 
 
 # 1. 절댓값 구하기 알고리즘 (1) 부호 판단
@@ -38,9 +33,6 @@ def abs_sign(a):
 abs_sign(-2)
 
 
-# In[8]:
-
-
 # 1. 절댓값 구하기 알고리즘 (2) 제곱 후 제곱근
 
 def abs_square(a):
@@ -49,9 +41,6 @@ def abs_square(a):
     return math.sqrt(b)
         # [수학모듈의 제곱근 함수]
 abs_square(-4)
-
-
-# In[62]:
 
 
 # 2. 1부터 n까지 합 구하기 알고리즘
@@ -86,9 +75,6 @@ def two_num_of_sum(n):
 two_num_of_sum(10)
 
 
-# In[60]:
-
-
 '''
 [1부터 n까지 합 구하기 알고리즘]
 
@@ -107,15 +93,6 @@ def twonum_of_sum(n):
 twonum_of_sum(10)
 
 
-# In[61]:
-
-
-
-
-
-# In[69]:
-
-
 from dataclasses import dataclass
     # [파이썬 구조체와 클래스 구현]
     
@@ -129,9 +106,6 @@ class Rectangle:
     
 rect = Rectangle(3, 4)
 rect.area()
-
-
-# In[84]:
 
 
 # 2. 1부터 n까지 연속한 숫자의 제곱 합 구하기 알고리즘
@@ -158,9 +132,6 @@ print("%f초 걸렸습니다." % (terminate_time - start_time))
     # [0.008897초]
 
 
-# In[85]:
-
-
 import timeit
  
 start_time = timeit.default_timer() 
@@ -176,15 +147,6 @@ terminate_time = timeit.default_timer()
     
 print("%f초 걸렸습니다." % (terminate_time - start_time)) 
     # [0.000257초]
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 # 3. 주어진 숫자 n개 중 최댓값 찾기 알고리즘
