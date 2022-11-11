@@ -373,3 +373,37 @@ log = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zer
 output = ["dig2 3 6","dig1 8 1 5 1","let1 art can","let3 art zero","let2 own kit dig"]
 result = ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
 '''
+
+
+# 제7장. 정렬 알고리즘 : 선형 자료구조
+
+# 7.1. 삽입 정렬 알고리즘
+
+import random
+a = random.sample(range(1, 10), 5)
+    # [1 <= x <= 11의 난수로 구성된 5개 리스트 생성]
+print(a)
+    # [정렬 전]
+
+print("\n")
+for i in range(1, len(a)):
+    # [리스트 크기만큼 반복]
+    for j in range(i, 0, -1):
+        # [j 인덱스의 값이 줄면서 삽입할 위치를 찾을 때까지 반복]
+        if a[j] < a[j-1]:
+            # [현재 인덱스가 앞의 원소보다 작다면]
+            a[j], a[j-1] = a[j-1], a[j]
+            # [swap해서 값 뒤로 밀어냄]
+        else:
+            break
+            # [불필요한 반복 피하기 위한 break]
+print(a)
+    # [정렬 후 리스트 리턴]
+    
+# 7.2. 거품 정렬 알고리즘 (버블 / 안정) 
+# 7.3. 선택 정렬 알고리즘 (불안정)
+# 7.4. 퀵 정렬 알고리즘 (재귀함수)
+# 7.5. 병합 정렬 알고리즘 (재귀함수, 스택 메모리, 머지)
+# 7.6. 쉘 정렬 알고리즘 (삽입 정렬 확장판)
+# 7.7. 기수 정렬 알고리즘
+# 7.8. 파이썬 내장 정렬 알고리즘
