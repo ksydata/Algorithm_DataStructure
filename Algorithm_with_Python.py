@@ -312,4 +312,31 @@ s.isPalindrom()
         # collections.defaultdict()
         # collections.Counter()
         # collections.Ordereddicted
+        
+        
+# 6.2. 문자열 뒤집는 알고리즘 : 리턴 없이 리스트 내부를 직접 조작하라는 제약 사항 有
 
+# 6.2.(1) 투 포인터를 이용한 리스트 내부 스왑 방식
+
+s = ["a", "w", "a", "y"]
+
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+         l, r = 0, len(s) - 1
+        while l <= r: 
+            s[l], s[r] = s[r], s[l]
+            l += 1
+            r -= 1
+
+# 6.2.(2) 파이써닉 코드
+
+class Solution:
+    def reverseString(self, s: list[str]) -> None:
+        # [class 구현할 때]
+        s = s[::-1]
+        s.reverse()
+
+# s.reverseString()
