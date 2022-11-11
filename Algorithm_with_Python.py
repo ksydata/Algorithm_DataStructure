@@ -253,7 +253,7 @@ a.sort()
 # 제6장. 문자열 조작
 
 # 6.1. 유효한 팰린드롬 여부 판별하는 알고리즘
-# 6.1.(1) 리스트로 변환 > 6.2. 데크 자료형을 이용한 최적화
+# 6.1.(1) 리스트로 변환
 
 def isPalindrome(self, s: str) -> bool:
     
@@ -263,9 +263,7 @@ def isPalindrome(self, s: str) -> bool:
 
     strs = list(str(strs))
     print(strs)
-    
-    # strs: Deque = collections.deque
-    
+        
     for char in s:
         if char.isalnum():
             # [숫자, 영문자 여부 판별하는 함수]
@@ -277,11 +275,7 @@ def isPalindrome(self, s: str) -> bool:
                 return False
     return True
 
-    # [딕셔너리와 관련된 컨테이너 자료형]
-        # collections.defaultdict()
-        # collections.Counter()
-        # collections.Ordereddicted
-
+        
 # 6.1.(3) 슬라이싱
 
 def isPalindrom(self, s: str) -> bool:
@@ -292,3 +286,30 @@ def isPalindrom(self, s: str) -> bool:
         # [문자열 슬라이싱 및 역순으로 뒤집기 s.reverse]
     
     
+# 6.1.(2) 데크 자료형을 이용한 최적화
+
+def isPalindrom(self, s: str) -> bool:
+    
+    strs = ["a", "m", "a", "n", "a", "p", "l", "a", "n", "a", "c", "a", "n", "a", "l", "p", "a", "n", "a", "m", "a"]
+    strs: Deque = collections.deque()
+         # [자료형을 데큐로 선언]
+    
+    for char in s:
+        if char.isalnum():
+            strs.append(char.lower())
+        
+        while len(strs) > 1:
+            if strs.popleft() != strs.pop():
+                # [strs.pop()은 시간복잡도 O(n)이지만, strs.popleft()는 O(1)]
+                return False
+            
+        return True
+
+s.isPalindrom()
+    # [AttributeError: 'list' object has no attribute 'isPalindrom']
+
+    # [딕셔너리와 관련된 컨테이너 자료형]
+        # collections.defaultdict()
+        # collections.Counter()
+        # collections.Ordereddicted
+
