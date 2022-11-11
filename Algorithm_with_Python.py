@@ -322,23 +322,22 @@ s = ["a", "w", "a", "y"]
 
 class Solution:
     def reverseString(self, s: List[str]) -> None:
-        """
-        Do not return anything, modify s in-place instead.
-        """
-         l, r = 0, len(s) - 1
-        while l <= r: 
-            s[l], s[r] = s[r], s[l]
-            l += 1
-            r -= 1
+        left = 0 
+        right = len(s) - 1
 
+        while left <= right: 
+            s[left], s[right] = s[right], s[left]
+            left += 1
+            right -= 1
+            
+    # [We will use two pointers, one from start and one from end]
+    # [We will swap the chars and increment the left and decrement the right]
+
+    
 # 6.2.(2) 파이써닉 코드
 
 class Solution:
     def reverseString(self, s: list[str]) -> None:
-        # [class 구현할 때]
         s = s[::-1]
         s.reverse()
 
-# s.reverseString()
-    # [We will use two pointers, one from start and one from end]
-    # [We will swap the chars and increment the left and decrement the right]
