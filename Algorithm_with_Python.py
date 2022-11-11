@@ -349,15 +349,27 @@ class Solution:
             # [0. 요구조건을 깔끔하게 처리할 것]
             # [1. 람다 + 연산자 이용한 로그를 재정렬함 (logs)]
             # [2. 문자로 구성된 로그가 숫자 로그보다 우선함 (letters > digits)]
-            # [3. 식별자는 순서에 영향을 미치지 않지만 문자가 동일할 경우 식별자 순으로 함]
+            # [3. "식별자"는 순서에 영향을 미치지 않지만 문자가 동일할 경우 식별자 순으로 함]
             # [4. 숫자로그는 입력 순서대로 함]
-
-        if logs == logs.split()[1].isdigit:
-            digits.append(logs)
-        else:
-            letters.append(logs)
         
-        letters.sort( key = lambda x: (x.split()[1:], x.split()[0]) )
-            # [2개의 key를 람다 표현식으로 정리]
+        letters = []
+        digits = []
+            # [list 초기화]
+
+        for log in logs:
+            if log == log.split(" ")[1].isdigit:
+                digits.append(log)
+            else:
+                letters.append(log)
+            # [digits인지 묻는 method 사용하여 소수, 음수의 경우 False 리턴]
+            # [list를 띄어쓰기(공백) 기준으로 쪼개서 list화]
+        
+        letters.sort( key = lambda x: (x.split(" ")[1:], x.split(" ")[0]) )
+            # [2개의 key를 letters list 정렬하여 람다 표현식으로 정리]
         return letters + digits
 
+'''
+log = ["dig1 8 1 5 1","let1 art can","dig2 3 6","let2 own kit dig","let3 art zero"]
+output = ["dig2 3 6","dig1 8 1 5 1","let1 art can","let3 art zero","let2 own kit dig"]
+result = ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2 3 6"]
+'''
