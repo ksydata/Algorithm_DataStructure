@@ -400,9 +400,45 @@ for i in range(1, len(a)):
 print(a)
     # [정렬 후 리스트 리턴]
     
+
+# 7.4. 퀵 정렬 알고리즘 (재귀함수)
+
+a = random.sample(range(1, 10), 5)
+print(a)
+print("\n")
+
+def quickSort(a, start, end):
+    # [재귀함수용 함수 선언] 리스트, 시작인덱스, 종료인덱스
+    
+    if start < end:
+            # [시작 인덱스 보다 끝 인덱스가 클 경우]
+        left = start
+            # [left 변수에 시작 인덱스 할당]
+        pivot = a[end]
+            # [pivot 값은 a list의 마지막 원소 값]
+        
+        for i in range(start, end):
+                # [시작인덱스부터 끝 원소까지 반복]
+            if a[i] < pivot:
+                # [list 인덱스 값이 pivot 값보다 작을 경우] 
+                a[i], a[left] = a[left], a[i]
+                # [해당 인덱스와 left 인덱스 swap]
+                left += 1
+                # [인덱스 한 단위 증가시켜 자리를 옮겨가며 비교]
+                
+            a[left], a[end] = a[end], a[left]
+                # [left 인덱스와 끝 인덱스 swap]
+            print(left)
+            quickSort(a, start, left - 1)
+                # [재귀호출] 리스트, 시작인덱스, left - 1 
+            quickSort(a, left + 1, end)
+                # [재귀호출] 리스트, left + 1. 종료인덱스
+quickSort(a, 0, len(a) - 1)
+print(a)
+   
+    
 # 7.2. 거품 정렬 알고리즘 (버블 / 안정) 
 # 7.3. 선택 정렬 알고리즘 (불안정)
-# 7.4. 퀵 정렬 알고리즘 (재귀함수)
 # 7.5. 병합 정렬 알고리즘 (재귀함수, 스택 메모리, 머지)
 # 7.6. 쉘 정렬 알고리즘 (삽입 정렬 확장판)
 # 7.7. 기수 정렬 알고리즘
