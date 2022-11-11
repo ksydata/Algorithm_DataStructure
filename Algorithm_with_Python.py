@@ -340,3 +340,5 @@ class Solution:
         s.reverse()
 
 # s.reverseString()
+    # [We will use two pointers, one from start and one from end]
+    # [We will swap the chars and increment the left and decrement the right]
