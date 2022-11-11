@@ -257,7 +257,12 @@ a.sort()
 
 def isPalindrome(self, s: str) -> bool:
     
-    strs = []
+    strs = "A man, a plan, a canal: panama"
+    strs = strs.lower()
+    strs = strs.split()
+
+    strs = list(str(strs))
+    print(strs)
     
     # strs: Deque = collections.deque
     
@@ -267,7 +272,7 @@ def isPalindrome(self, s: str) -> bool:
             strs.append( char.lower() )
     
         while len(strs) > 1:
-            if strs.pop(0) != strs.pop()
+            if strs.pop(0) != strs.pop():
                 # 팰린드롬 여부를 판별하는 함수
                 return False
     return True
@@ -285,3 +290,5 @@ def isPalindrom(self, s: str) -> bool:
         # [영숫자만 걸러내도록 정규식으로 불필요한 문자 필터링]
     return s == s[::-1]
         # [문자열 슬라이싱 및 역순으로 뒤집기 s.reverse]
+    
+    
