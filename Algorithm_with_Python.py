@@ -341,3 +341,23 @@ class Solution:
         s = s[::-1]
         s.reverse()
 
+
+# 6.3. 로그 파일 재정렬하는 알고리즘        
+        
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+            # [0. 요구조건을 깔끔하게 처리할 것]
+            # [1. 람다 + 연산자 이용한 로그를 재정렬함 (logs)]
+            # [2. 문자로 구성된 로그가 숫자 로그보다 우선함 (letters > digits)]
+            # [3. 식별자는 순서에 영향을 미치지 않지만 문자가 동일할 경우 식별자 순으로 함]
+            # [4. 숫자로그는 입력 순서대로 함]
+
+        if logs == logs.split()[1].isdigit:
+            digits.append(logs)
+        else:
+            letters.append(logs)
+        
+        letters.sort( key = lambda x: (x.split()[1:], x.split()[0]) )
+            # [2개의 key를 람다 표현식으로 정리]
+        return letters + digits
+
