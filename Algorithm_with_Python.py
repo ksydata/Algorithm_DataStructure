@@ -219,3 +219,69 @@ def max_search(n):
         if len(list) % 2 != 0:
             list[len(list) / 2]
 
+            
+# [자료형 시간복잡도]
+            
+a = [1, 8, 1, 5, 1, 1, 8]
+
+# O(1)
+len(a)
+a[0]
+# a[key] 키를 조회하여 값을 리턴
+# a[key] = value 키 값을 삽입
+# key in a
+a[5:8]
+a.append(elem)
+a.pop() 
+    # [stack] deque
+a.pop(0)
+
+# O(n)
+elem in a
+a.count(elem)
+a.index(elem)
+del a[1]
+a.reverse()
+min(a)
+max(a)
+
+# O(nlogn)
+a.sort()
+    # [Timsort]     
+    
+  
+# 제6장. 문자열 조작
+
+# 6.1. 유효한 팰린드롬 여부 판별하는 알고리즘
+# 6.1.(1) 리스트로 변환 > 6.2. 데크 자료형을 이용한 최적화
+
+def isPalindrome(self, s: str) -> bool:
+    
+    strs = []
+    
+    # strs: Deque = collections.deque
+    
+    for char in s:
+        if char.isalnum():
+            # [숫자, 영문자 여부 판별하는 함수]
+            strs.append( char.lower() )
+    
+        while len(strs) > 1:
+            if strs.pop(0) != strs.pop()
+                # 팰린드롬 여부를 판별하는 함수
+                return False
+    return True
+
+    # [딕셔너리와 관련된 컨테이너 자료형]
+        # collections.defaultdict()
+        # collections.Counter()
+        # collections.Ordereddicted
+
+# 6.1.(3) 슬라이싱
+
+def isPalindrom(self, s: str) -> bool:
+    s = s.lower()
+    s = re.sub( "[^a-z0-9]", "", s )
+        # [영숫자만 걸러내도록 정규식으로 불필요한 문자 필터링]
+    return s == s[::-1]
+        # [문자열 슬라이싱 및 역순으로 뒤집기 s.reverse]
