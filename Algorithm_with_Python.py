@@ -408,12 +408,12 @@ class Solution:
                 # [부분 문자열의 시작부터 i와 반대 방향으로]
                 # [한쪽으로만 줄이는 게 아니라 앞뒤로 줄여야 함]
                 if s[i:j + 1] == s[i:j + 1][::-1]:
-                    return len(s)
+                    return s[i:j + 1]
       
 class Solution:
     def longestPalindrome(self, s: str) -> int:
         letter, result, answer = {}, [], []
-        # [딕셔너리 자료형 이용]
+        # [딕셔너리 자료형 이용] 아직 완전히 이해한 단계 아닌바 복습 필
         x, y = 0, 0
 
         for i in s:
@@ -421,11 +421,14 @@ class Solution:
                 letter[i] = 1
             else:
                 letter[i] += 1
+                # [i in letter, i = letter.key]
                 
         for i in letter.values():
             if i % 2 == 0:
+                # [짝수이면 결과 리스트로]
                 result.append(i)
             else:
+                # [홀수이면 답변 리스트로]
                 answer.append(i)
 
         if answer:
