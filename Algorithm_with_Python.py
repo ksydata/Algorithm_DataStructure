@@ -375,6 +375,29 @@ result = ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2
 '''
 
 
+# 6.4. 문자열의 팰린드롬 여부 확인하는 알고리즘
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # [SY VERSION]
+        '''
+        if x[0] == x[-1]:
+            return x
+        else: 
+            return FALSE
+        
+        
+        left = 0, right = len(x) - 1
+        if x[left] == x[right]:
+            return True
+        else: 
+            return False
+        '''
+
+        if str(x) == str(x)[::-1]:
+            return True
+        
+
 # 제7장. 정렬 알고리즘 : 선형 자료구조
 
 # 7.1. 삽입 정렬 알고리즘
