@@ -375,7 +375,7 @@ result = ["let1 art can","let3 art zero","let2 own kit dig","dig1 8 1 5 1","dig2
 '''
 
 
-# 6.4. 문자열의 팰린드롬 여부 확인하는 알고리즘
+# 6.4.1. 문자열의 팰린드롬 여부 확인하는 알고리즘
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
@@ -397,6 +397,34 @@ class Solution:
         if str(x) == str(x)[::-1]:
             return True
         
+# 6.4.2. 가장 긴 문자열 팰린드롬 찾는 알고리즘
+
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        letter, result, answer = {}, [], []
+        x, y = 0, 0
+
+        for i in s:
+            if i not in letter:
+                letter[i] = 1
+            else:
+                letter[i] += 1
+                
+        for i in letter.values():
+            if i % 2 == 0:
+                result.append(i)
+            else:
+                answer.append(i)
+
+        if answer:
+            x = 1
+            y = (sum(answer) - len(answer))
+
+        return (sum(result) + y + x)
+    
+    
+# 6.4.3. 가장 긴 문자열 팰린드롬의 부분 문자열 찾는 알고리즘 > 향후 도전 (Medium level)
+
 
 # 제7장. 정렬 알고리즘 : 선형 자료구조
 
