@@ -402,7 +402,18 @@ class Solution:
 
 class Solution:
     def longestPalindrome(self, s: str) -> int:
+        for i in range(len(s) - 1, 0, -1):
+            # [문자열 끝에서 시작으로 인덱싱]
+            for j in range(len(s) - i + 1):
+                # [부분 문자열의 시작부터 i와 반대 방향으로]
+                # [한쪽으로만 줄이는 게 아니라 앞뒤로 줄여야 함]
+                if s[i:j + 1] == s[i:j + 1][::-1]:
+                    return len(s)
+      
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
         letter, result, answer = {}, [], []
+        # [딕셔너리 자료형 이용]
         x, y = 0, 0
 
         for i in s:
