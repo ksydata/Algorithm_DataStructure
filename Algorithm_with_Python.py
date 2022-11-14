@@ -396,6 +396,7 @@ class Solution:
 
         if str(x) == str(x)[::-1]:
             return True
+            # [문자열이 풀 팰린드롬으로 풀 문자열 리턴]
         
 # 6.4.2. 가장 긴 문자열 팰린드롬 찾는 알고리즘
 
