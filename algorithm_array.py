@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+## 파이썬을 이용한 알고리즘의 이해 ##
+# 제7장. 배열 Array
+
+# 7.3.(1) 세 수의 합
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # [브루스 포스로 풀이]
