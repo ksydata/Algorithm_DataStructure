@@ -5,12 +5,13 @@
 # 제7장. 배열 Array
 
 # 7.3.(1) 세 수의 합
+
+# [SY first version]
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         # [브루스 포스로 풀이] 무차별 대입 방식
         # [합이 "0"인 3수 리턴]
         
-        # [SY first version]
         nums = nums.sort() 
                 # [일단 정렬]
 
@@ -22,8 +23,8 @@ class Solution:
                 # [Error] Invalid Syntax
     
    
-# 7.1.(1) 두 수의 합
-
+# 7.1.(1) 두 수의 합 : 무차별 대입 방식
+# [SY first version]
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         # [덧셈하여 타겟을 만들 수 있는 배열의 두 숫자 인덱스 리턴]
@@ -51,5 +52,5 @@ class Solution:
                 if nums[i] + nums[j] == target:
                     return [i, j]
                 
-
+# 7.1.(3) 첫 번째 수를 뺀 결과 키 조회 : 딕셔너리 자료형 이용
 
