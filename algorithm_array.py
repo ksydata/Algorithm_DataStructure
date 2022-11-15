@@ -7,7 +7,7 @@
 # 7.3.(1) 세 수의 합
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # [브루스 포스로 풀이]
+        # [브루스 포스로 풀이] 무차별 대입 방식
         # [합이 "0"인 3수 리턴]
         
         # [SY first version]
